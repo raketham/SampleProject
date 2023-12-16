@@ -16,8 +16,6 @@ import java.util.List;
 @RestController
 public class SampleController {
 
-    @Autowired
-    private SampleService sampleService;
 
     @Autowired
     private SampleRepository sampleRepository;
@@ -27,6 +25,11 @@ public class SampleController {
         return sampleRepository.findAll();
     }
 
+    @GetMapping("/sample")
+    String returnString(){
+        System.out.println("testing");
+        return "hello";
+    }
 
     @PostMapping("/items")
     Sample createNew(@RequestBody Sample sample) {

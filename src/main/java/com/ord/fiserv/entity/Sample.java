@@ -3,20 +3,24 @@ package com.ord.fiserv.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import lombok.*;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 @Entity
-public class Sample {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Sample implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Sample(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+
 
     private String name;
 
