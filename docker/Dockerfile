@@ -7,8 +7,9 @@ COPY pom.xml .
 RUN mvn dependency:go-offline
 
 COPY src src
+COPY entry_point.sh .
 RUN mvn package -Dmaven.test.skip=true
 # compute the created jar name and put it in a known location to copy to the next layer.
 # If the user changes pom.xml to have a different version, or artifactId, this will find the jar
 
-ENTRYPOINT ["java -jar  /home/jboss/project/target/SampleProject-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["/home/jboss/project/entry_point.sh"]
