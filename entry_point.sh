@@ -1,11 +1,7 @@
-echo "application files"
-
 ls -lart
-
-JAR_FILE = $(ls /home/jboss/project/target/SampleProject-0.0.1-*.jar)
-
-echo "Jar file $JAR_FILE"
+echo "java springboot application starting"
 java -version
 
-java -jar $JAR_FILE
+echo "java version verified"
 
+java -jar SampleProject-0.0.1-SNAPSHOT.jar
