@@ -36,3 +36,31 @@ spec:
       targetPort: 8081
   selector:
     app: sample-springboot-app
+
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: sample-springboot-basic
+  namespace: ocp-telco-fiserv-be-dev
+  labels:
+    app: sample-springboot-basic
+    app.kubernetes.io/component: sample-springboot-basic
+    app.kubernetes.io/instance: sample-springboot-basic
+    app.kubernetes.io/name: sample-springboot-basic
+    app.kubernetes.io/part-of: sample-app
+    app.openshift.io/runtime: spring-boot
+  annotations:
+    isFromDevfile: 'true'
+    openshift.io/host.generated: 'true'
+spec:
+  host: >-
+    sample-springboot-basic-ocp-telco-fiserv-be-dev.apps.bcogcfwp.westus3.aroapp.io
+  to:
+    kind: Service
+    name: sample-springboot-basic
+    weight: 100
+  port:
+    targetPort: '8081'
+  wildcardPolicy: None
+
